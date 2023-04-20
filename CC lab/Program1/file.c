@@ -8,7 +8,7 @@ char keys[50][50]={"main","auto","printf","break","case","char","const","continu
 "if","int","long","register","return","short","signed",
 "sizeof","static","struct","switch","typedef","union", "unsigned","void","while"};
 void main(){
-	char ch,str[25],seps[15]=" \t\n,;(){}[]#\"<>",oper[]="!%^&*-+=~|.<>/?";
+    char ch,str[25],seps[15]=" \t\n,;(){}[]#\"<>",oper[]="!%^&*-+=~|.<>/?";
 	int j;
 	char fname[50];
 	FILE *f1;
@@ -16,81 +16,81 @@ void main(){
 	scanf("%s",fname);
 	f1 = fopen(fname,"r");
 	if(f1==NULL){
-	printf("file not found");
-	
+	    printf("file not found");
 	}
 	while((ch=fgetc(f1))!=EOF){
-	for(j=0;j<=14;j++){
-	if(ch==oper[j]){
-	printf("%c is an operator\n",ch);
-	op++;
-	str[i]='\0';
-	keyw(str);
-	}
-	}
-	for(j=0;j<=14;j++){
-	if(i==-1)
-	break;
-	if(ch==seps[j]){
-	if(ch=='#'){
-	while(ch!='>'){
-	printf("%c",ch);
-	ch=fgetc(f1);
-	}
-	printf("%c is a header file\n",ch);
-	i=-1;
-	break;
-	}
-	if(ch=='"'){
-	do{
-	ch=fgetc(f1);
-	printf("%c",ch);
-	}while(ch!='"');
-	printf("\b is an argument\n");
-	i=-1;
-	break;
-	}
-	str[i]='\0';
-	keyw(str);
-	}
-	}
-	if(i!=-1){
-	str[i]=ch;
-	i++;
-	}else
-	i=0;
+	    for(j=0;j<=14;j++){
+	        if(ch==oper[j]){
+	            printf("%c is an operator\n",ch);
+	            op++;
+	            str[i]='\0';
+	            keyw(str);
+	       }
+	    }
+	    for(j=0;j<=14;j++){
+	        if(i==-1)
+	        break;
+	        if(ch==seps[j]){
+	            if(ch=='#'){
+	                while(ch!='>'){
+	                    printf("%c",ch);
+	                    ch=fgetc(f1);
+	                }
+	                printf("%c is a header file\n",ch);
+	                i=-1;
+	                break;
+	            }
+	            if(ch=='"'){
+	                do{
+	                    ch=fgetc(f1);
+	                    printf("%c",ch);
+	                }while(ch!='"');
+	                printf("\b is an argument\n");
+	                i=-1;
+	                break;
+	            }
+	            str[i]='\0';
+	            keyw(str);
+	        }
+	    }
+	    if(i!=-1){
+	        str[i]=ch;
+	        i++;
+	    }else
+	    i=0;
 	}
 	printf("Keywords: %d\nIdentifiers: %d\nOperators: %d\nNumbers:%d\n",kw,id,op,num);
-	}
-	void keyw(char *p){
-	int k,flag=0;
-	for(k=0;k<=31;k++){
-	if(strcmp(keys[k],p)==0){
-	printf("%s is a keyword\n",p);
-	kw++;
-	flag=1;
-	break;
-	}
+}
+void keyw(char *p){
+    int k,flag=0;
+    for(k=0;k<=31;k++){
+        if(strcmp(keys[k],p)==0){
+            printf("%s is a keyword\n",p);
+            kw++;
+            flag=1;
+            break;
+	    }
 	}
 	if(flag==0){
-	if(isdigit(p[0])){
-	printf("%s is a number\n",p);
-	num++;
-	}else{
-	if(p[0]!='\0'){
-	printf("%s is an identifier\n",p);
-	id++;
-	}
-	}
+	    if(isdigit(p[0])){
+	        printf("%s is a number\n",p);
+	        num++;
+	    }else{
+	        if(p[0]!='\0'){
+	            printf("%s is an identifier\n",p);
+	            id++;
+	        }
+	    }
 	}
 	i=-1;
-	}
-	int isdigit(int p){
-	int digit[10] = {0,1,2,3,4,5,6,7,8,9};
-	for(int k = 0;k < 11 ; k++){
-	if(p == digit[k])
-	return 1;
-	else
+}
+int isdigit(int p){
+    int digit[10] = {0,1,2,3,4,5,6,7,8,9};
+    for(int k = 0;k < 11 ; k++){
+        if(p == digit[k])
+        return 1;
+        else
         return 0;
+    }
 }
-}
+	
