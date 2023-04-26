@@ -120,7 +120,7 @@ for(j=0;j<=top;j++) {
     printf("%c",stack[j]);
 }
 printf("\t \t");
-for(j=1;j<strlen(ip);j++) {
+for(j=i;j<strlen(ip);j++) {
     printf("%c",ip[j]);
 }
 printf("\t\t");
